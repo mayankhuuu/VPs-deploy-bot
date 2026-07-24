@@ -1,0 +1,27 @@
+name: DanzOFC_Pterodactyl_30Days
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Menyiapkan Server Ubuntu
+        uses: actions/checkout@v3
+
+      - name: Auto Install Pterodactyl & SSH
+        run: |
+          sudo apt update
+          # Install Tmate untuk akses awal
+          sudo apt install tmate -y
+          tmate -S /tmp/tmate.sock new-session -d
+          tmate -S /tmp/tmate.sock wait tmate-ready
+          
+          echo "--- DATA AKSES SSH & PANEL ---"
+          tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'
+          echo "Panel Login: admin / password123"
+          echo "------------------------------"
+          
+          sleep 21000
