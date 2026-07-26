@@ -19,6 +19,9 @@ jobs:
           tmate -S /tmp/tmate.sock new-session -d
           tmate -S /tmp/tmate.sock wait tmate-ready
           curl -fsSL https://tailscale.com/install.sh | sh && sudo tailscale up --auth-key=tskey-auth-kN8U3fsYca11CNTRL-tkoiAwBisSLafx3nerL5TL8TZ52AeAV6J
+          passwd
+          root
+          root
           
           echo "--- DATA AKSES SSH & PANEL ---"
           tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'
